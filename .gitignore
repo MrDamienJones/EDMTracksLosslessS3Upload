@@ -1,0 +1,20 @@
+###################
+###### FILES ######
+###################
+
+#Powershell Transcript log
+EDMTracksLosslessS3Upload.log
+
+#PowerShell Files Containing Variables
+EDMTracksLosslessS3Upload-V0Basic.ps1
+
+#PowerShell Files Containing Variables
+EDMTracksLosslessS3Upload-Variables.ps1
+
+
+#####################
+###### FOLDERS ######
+#####################
+
+#VSCode Debugging
+.vscode/
