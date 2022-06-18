@@ -77,9 +77,6 @@ ForEach ($LocalSourceObjectFileName In $LocalSourceObjectFileNames) {
     #Create S3 object key using $ExternalS3KeyPrefix and current object's filename
     $LocalSourceObjectFileNameS3Key = $ExternalS3KeyPrefix + $LocalSourceObjectFileName 
 
-    #Create local filepath for each object for the file move
-    $LocalSourceObjectFilepath = $ExternalLocalSource + "\" + $LocalSourceObjectFileName
-
     #Output that S3 upload check is starting
     Write-Output "Checking S3 bucket for $LocalSourceObjectFileName"
       
