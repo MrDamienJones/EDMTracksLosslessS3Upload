@@ -1,4 +1,4 @@
-# EDMTracksLosslessS3Upload
+# EDMTracksLosslessS3Upload-PowerShell
 
 EDMTracksLosslessS3Upload is a PowerShell script for uploading local lossless music files to Amazon S3.  The script includes:
 
