@@ -25,6 +25,12 @@ $LocalSourceObjectFileExtensions = Get-ChildItem -Path $ExternalLocalSource | Fo
 #Get list of filenames in $ExternalLocalSource
 $LocalSourceObjectFileNames = Get-ChildItem -Path $ExternalLocalSource | ForEach-Object -Process { [System.IO.Path]::GetFileName($_) }
 
+#Counter for successful uploads
+$UploadCountSuccess = 0
+
+#Counter for failed uploads
+$UploadCountFail = 0
+
 
 ##########################
 ####### OPERATIONS #######
@@ -128,11 +134,13 @@ ForEach ($LocalSourceObjectFileName In $LocalSourceObjectFileNames) {
     #If $LocalSourceObjectFileNameS3Key doesn't exist in S3, move to local Fail folder.
     If ($null -eq $LocalSourceObjectFileNameS3Check) {
         Write-Output "S3 Upload Check FAIL: $LocalSourceObjectFileName.  Moving to local Fail folder"
+        $UploadCountFail = $UploadCountFail + 1
         Move-Item -Path $LocalSourceObjectFilepath -Destination $ExternalLocalDestinationFail
     }
     #If $LocalSourceObjectFileNameS3Key does exist in S3, move to local Success folder.
     Else {
         Write-Output "S3 Upload Check Success: $LocalSourceObjectFileName.  Moving to local Success folder"
+        $UploadCountSuccess = $UploadCountSuccess + 1
         Move-Item -Path $LocalSourceObjectFilepath -Destination $ExternalLocalDestinationSuccess           
     }
 }
@@ -140,6 +148,7 @@ ForEach ($LocalSourceObjectFileName In $LocalSourceObjectFileNames) {
 
 #Stop Transcript
 Write-Output " "
+Write-Output "$LocalSourceCount files found.  $UploadCountSuccess successful uploads.  $UploadCountFail failed uploads"
 Write-Output "All files processed.  Exiting."
 Start-Sleep -Seconds 10
 Stop-Transcript
