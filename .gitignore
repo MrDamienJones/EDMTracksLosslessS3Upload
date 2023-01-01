@@ -11,6 +11,9 @@ EDMTracksLosslessS3Upload-V0Basic.ps1
 #PowerShell Files Containing Variables
 EDMTracksLosslessS3Upload-Variables.ps1
 
+#PowerShell Scripts InProgress
+EDMTracksLosslessS3Upload-V4.ps1
+
 #Maintenance Instructions
 Maintenance.txt
 
